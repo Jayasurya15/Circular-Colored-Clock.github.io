@@ -10,7 +10,7 @@ body {
     background: #191919;
 }
 
-canvas, .clock-style {
+canvas {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -18,62 +18,55 @@ canvas, .clock-style {
 }
 
 input[type="color"] {
-	-webkit-appearance: none;
-	border: none;
-	width: 32px;
-	height: 32px;
+    -webkit-appearance: none;
+    border: none;
+    width: 32px;
+    height: 32px;
 }
 
 input[type="color"]::-webkit-color-swatch-wrapper {
-	padding: 0;
+    padding: 0;
 }
 
 input[type="color"]::-webkit-color-swatch {
-	border: none;
+    border: none;
 }
 
 .color {
-  position: absolute;
-  right: 10px;
-  bottom: 100px;
+    position: absolute;
+    right: 10px;
+    bottom: 100px;
+    display: flex;
+    gap: 10px;
 }
 
 .credits {
-  position: absolute;
-  left: 10px;
-  bottom: 100px;
+    position: absolute;
+    left: 10px;
+    bottom: 100px;
+    color: white;
 }
 
-.credits a {
-  text-decoration: none;
-  color: #1d87da;
-  background: rgba(0, 100, 230, 0.3);
+.js {
+    text-align: center;
+    color: red;
+    font-size: 18px;
 }
 
-.credits a:hover {
-  text-decoration: underline;
-  color: #fff;
-  background: rgba(25, 125, 255, 0.7);
+.js1 {
+    border: solid 2px;
+    border-radius: 40px;
+    text-align: center;
+    color: red;
+    background-color: yellow;
+    font-family: Times New Roman;
+    font-style: italic;
+    height: 30px;
+    width: 80px;
+    cursor: pointer;
 }
 
-.js{
-text-align: center;
-color: red;
-}
-
-.js1{
-border: solid 2px;
-border-radius: 40px;
-text-align: center;
-color: red;
-background-color: yellow;
-font-family: Times New Roman;
-font-style: italic;
-height: 30px;
-width: 60px;
-}
-
-.js2{
-position: absolute;
-
+.js2 {
+    position: relative;
+    color: white;
 }
