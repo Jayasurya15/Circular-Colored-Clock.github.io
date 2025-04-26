@@ -1,50 +1,20 @@
-const circle = [new Circle('minutes',
- '#ff0000'), new Circle('seconds',
- '#f37e21')];
-
-
+const circle = [new Circle('minutes', '#ff0000'), new Circle('seconds', '#f37e21')];
 
 function update() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
- ctx.clearRect(0, 0, canvas.width,
-  canvas
-  .height);
+    // Draw Clock Border
+    BorderClock(document.getElementById('clock').value);
 
+    // Draw Circles
+    circle[0].draw(document.getElementById('outside').value);
+    circle[1].draw(document.getElementById('inside').value);
 
+    // Draw Text Clock
+    TextClock();
 
- //clock
-
- BorderClock(document.getElementById(
-   'clock')
-  .value);
-
-
-
- //circles
-
- circle[0].draw(document
-  .getElementById(
-   'outside').value);
-
- circle[1].draw(document
-  .getElementById(
-   'inside').value);
-
-
-
- //text
-
- TextClock();
-
-
-
- //loop
-
- window.requestAnimationFrame(
-  update);
-
+    // Loop
+    window.requestAnimationFrame(update);
 }
-
-
 
 document.body.onload = update;
