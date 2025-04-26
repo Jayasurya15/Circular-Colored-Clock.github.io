@@ -1,3 +1,4 @@
+// Clock.js
 const circle = [new Circle('minutes', '#ff0000'), new Circle('seconds', '#f37e21')];
 
 function update() {
@@ -17,4 +18,8 @@ function update() {
     window.requestAnimationFrame(update);
 }
 
-document.body.onload = update;
+// Ensure canvas size adjusts dynamically on body load and window resize
+document.body.onload = () => {
+    setCanvasSize(); // Ensure canvas is resized for responsiveness
+    update();        // Start the clock animation
+};
