@@ -1,11 +1,12 @@
+// Component.js
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
 // Set canvas size dynamically to ensure compatibility with all devices
 function setCanvasSize() {
     const ratio = window.devicePixelRatio || 1;
-    canvas.width = window.innerWidth / 1.5 * ratio;
-    canvas.height = window.innerHeight / 1.5 * ratio;
+    canvas.width = window.innerWidth * 0.8 * ratio; // Adjusted for responsiveness
+    canvas.height = window.innerHeight * 0.8 * ratio; // Adjusted for responsiveness
     ctx.scale(ratio, ratio);
 }
 setCanvasSize();
