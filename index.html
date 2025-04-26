@@ -3,17 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clock with Canvas</title>
-    <link rel="stylesheet" href="Clock.css">
+    <title>Responsive Circular Colored Clock</title>
+    <!-- Link to the stylesheet -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <p class="js">Created by JS</p>
-    <div class="msg">
-        <span>The size of the clock depends on your screen</span>
-        <a href="https://jayasurya15.github.io/Home-page.github.io/"><button class="js1">Home</button></a>
-    </div>
-    <canvas></canvas>
-    <div class="color">
+    <!-- Header Section -->
+    <header>
+        <p class="js">Created by JS</p>
+        <div class="msg">
+            <span>The size of the clock depends on your screen</span>
+            <a href="https://jayasurya15.github.io/Home-page.github.io/">
+                <button class="js1">Home</button>
+            </a>
+        </div>
+    </header>
+
+    <!-- Canvas Section for Clock -->
+    <main>
+        <canvas></canvas>
+    </main>
+
+    <!-- Color Controls for Clock -->
+    <section class="color">
         <div class="container">
             <label>Clock: 
                 <input type="color" id="clock" value="#ee82ef">
@@ -25,12 +37,16 @@
                 <input type="color" id="inside" value="#f37e21">
             </label>
         </div>
-    </div>
-    <div class="credits">
-        <span>Made by 
-            <p class="js2">Jayasurya</p>
-        </span>
-    </div>
+    </section>
+
+    <!-- Credits Section -->
+    <footer>
+        <div class="credits">
+            <span>Made by <p class="js2">Jayasurya</p></span>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
     <script src="Component.js"></script>
     <script src="Clock.js"></script>
 </body>
