@@ -1,72 +1,85 @@
-// Component.js
-const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext('2d');
+const canvas = document.querySelector("canvas");
+canvas.setAttribute("height", window.innerHeight / 1.5);
+canvas.setAttribute("width", window.innerWidth / 1.5);
 
-// Set canvas size dynamically to ensure compatibility with all devices
-function setCanvasSize() {
-    const ratio = window.devicePixelRatio || 1;
-    canvas.width = window.innerWidth * 0.8 * ratio; // Adjusted for responsiveness
-    canvas.height = window.innerHeight * 0.8 * ratio; // Adjusted for responsiveness
-    ctx.scale(ratio, ratio);
-}
-setCanvasSize();
-window.addEventListener('resize', setCanvasSize);
+const ctx = canvas.getContext("2d");
 
 function deg(degrees) {
-    return (degrees * (Math.PI / 180)) - Math.PI / 2;
+  return degrees * (Math.PI / 180) - Math.PI / 2;
 }
 
 function Circle(type, color) {
-    this.x = canvas.width / 2;
-    this.y = canvas.height / 2;
-    this.rad = () => {
-        return type === 'minutes' ? (canvas.width / 3) + 15 : canvas.width / 3;
-    };
-    this.color = color;
-    this.type = type;
-    this.time = () => {
-        const date = new Date();
-        return type === 'minutes' ? date.getMinutes() : date.getSeconds();
-    };
+  this.x = canvas.width / 2;
+  this.y = canvas.height / 2;
+  this.rad = () => {
+    if (type === "minutes") {
+      return canvas.width / 3 + 15;
+    } else {
+      return canvas.width / 3;
+    }
+  };
+  this.color = color;
+  this.type = type;
+  this.time = () => {
+    let date = new Date();
+    if (type === "minutes") {
+      return date.getMinutes();
+    } else {
+      return date.getSeconds();
+    }
+  };
 
-    this.draw = function (changeColor) {
-        ctx.beginPath();
-        ctx.strokeStyle = changeColor === undefined ? this.color : changeColor;
-        ctx.lineWidth = 8;
-        ctx.lineCap = 'round';
-        ctx.arc(this.x, this.y, this.rad(), -Math.PI, deg(this.time() * 6), false);
-        ctx.stroke();
-        ctx.closePath();
-    };
+  this.draw = function (changeColor) {
+    ctx.beginPath();
+    ctx.strokeStyle = changeColor === undefined ? this.color : changeColor;
+    ctx.lineWidth = 8;
+    ctx.lineCap = "round";
+    ctx.arc(this.x, this.y, this.rad(), -Math.PI, deg(this.time()) * 6, false);
+    ctx.stroke();
+    ctx.closePath();
+  };
 }
 
 function getZero(number) {
-    return number < 10 ? `0${number}` : number;
+  if (number < 10) {
+    return `0${number}`;
+  } else {
+    return number;
+  }
 }
 
 function TextClock() {
-    const date = new Date();
-    const sc = date.getSeconds();
-    const mn = date.getMinutes();
-    const hr = date.getHours();
+  let date = new Date();
+  let sc = date.getSeconds();
+  let mn = date.getMinutes();
+  let hr = date.getHours();
 
-    const text = `${getZero(hr)} : ${getZero(mn)} : ${getZero(sc)}`;
+  let text = `${getZero(hr)} : ${getZero(mn)} : ${getZero(sc)}`;
 
-    this.x = (canvas.width / 2) - (ctx.measureText(text).width / 2);
-    this.y = canvas.height / 2;
+  this.x = canvas.width / 2 - ctx.measureText(text).width / 2;
+  this.y = canvas.height / 2;
 
-    ctx.beginPath();
-    ctx.fillStyle = '#fff';
-    ctx.font = "25px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif";
-    ctx.fillText(text, this.x, this.y);
-    ctx.closePath();
+  ctx.beginPath();
+  ctx.fillStyle = "#fff";
+  ctx.font =
+    "25px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif";
+  ctx.fillText(text, this.x, this.y);
+  ctx.closePath();
 }
 
 function BorderClock(color) {
-    ctx.beginPath();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 10;
-    ctx.arc(canvas.width / 2, canvas.height / 2, (canvas.width / 3) + 30, 0, Math.PI * 2, false);
-    ctx.stroke();
-    ctx.closePath();
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 10;
+  ctx.arc(
+    canvas.width / 2,
+    canvas.height / 2,
+    canvas.width / 3 + 30,
+    0,
+    Math.PI * 2,
+    false,
+  );
+  ctx.stroke();
+  ctx.closePath();
 }
+
