@@ -1,8 +1,15 @@
 const canvas = document.querySelector('canvas');
-canvas.setAttribute('height', window.innerHeight / 1.5);
-canvas.setAttribute('width', window.innerWidth / 1.5);
-
 const ctx = canvas.getContext('2d');
+
+// Set canvas size dynamically to ensure compatibility with all devices
+function setCanvasSize() {
+    const ratio = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth / 1.5 * ratio;
+    canvas.height = window.innerHeight / 1.5 * ratio;
+    ctx.scale(ratio, ratio);
+}
+setCanvasSize();
+window.addEventListener('resize', setCanvasSize);
 
 function deg(degrees) {
     return (degrees * (Math.PI / 180)) - Math.PI / 2;
