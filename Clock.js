@@ -1,50 +1,29 @@
-const circle = [new Circle('minutes',
- '#ff0000'), new Circle('seconds',
- '#f37e21')];
-
-
+const circles = [
+    new Circle('minutes', '#ff0000'),
+    new Circle('seconds', '#f37e21')
+];
 
 function update() {
+    // Clear the canvas before redrawing
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
- ctx.clearRect(0, 0, canvas.width,
-  canvas
-  .height);
+    // Draw the clock border
+    const clockColor = document.getElementById('clock').value;
+    BorderClock(clockColor);
 
+    // Draw circles
+    const outsideColor = document.getElementById('outside').value;
+    const insideColor = document.getElementById('inside').value;
 
+    circles[0].draw(outsideColor);
+    circles[1].draw(insideColor);
 
- //clock
+    // Draw clock text
+    TextClock();
 
- BorderClock(document.getElementById(
-   'clock')
-  .value);
-
-
-
- //circles
-
- circle[0].draw(document
-  .getElementById(
-   'outside').value);
-
- circle[1].draw(document
-  .getElementById(
-   'inside').value);
-
-
-
- //text
-
- TextClock();
-
-
-
- //loop
-
- window.requestAnimationFrame(
-  update);
-
+    // Request the next animation frame
+    window.requestAnimationFrame(update);
 }
 
-
-
+// Start the update loop when the page loads
 document.body.onload = update;
