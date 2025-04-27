@@ -82,4 +82,3 @@ function BorderClock(color) {
   ctx.stroke();
   ctx.closePath();
 }
-
